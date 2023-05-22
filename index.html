@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="linkForm">
+        <label for="startRange">StartRange:</label>
+        <input type="number" name="" id="startRange" value="1">
+        <label for="endRange">EndRange:</label>
+        <input type="number" name="" id="endRange" value="1">
+        <button type="button" onclick="displayTable()">GenerateTable</button>
+
+       </form>
+       <table id="linkTable">
+        <tr>
+            <th>links</th>
+        </tr>
+       </table>
+
+
+    <script>
+        let data =["syllabus.html","pi.html","p2.html","style.html","email.html","system.html", "process.html"];
+          let endRange = data.length;
+
+          document.addEventListener("DOMContentLoaded", function(){
+            let validRangeMsg ="ValidRange: 1-" + endRange;
+            document.getElementById("startRange").setAttribute("max",endRange);
+            document.getElementById("endRange").setAttribute("max",endRange);
+            document.getElementById("endRange").setAttribute("value",endRange);
+            document.getElementById("linkTable").insertAdjacentHTML("beforebegin",validRangeMsg);
+
+          });
+             function displayTable() {
+                let st = parseInt(document.getAnimations("endRange").value);
+                let linkTable = document.getElementById("linkTable");
+                let tableContent = ''';
+
+                if (startRange> =1 && startRange<= endRange && endRange <= data.length) {
+                    for (let i = startRange -1; i< endRange; i++){
+                        tableContent += "<tr><td><a href="+ data[i] + data[i] + "</a></td><tr>";
+
+                    }
+                    else {
+                        tableContent ="invalid range, valid range: 1-" + endRange;
+
+                    }
+                    linkTable.innerHTML ="<tr><th>link</th></tr>"+ tableContent
+                
+                }
+             }
+
+
+        
+    </script>
+    
+</body>
+</html>
